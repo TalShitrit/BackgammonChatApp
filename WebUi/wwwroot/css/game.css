@@ -1,0 +1,76 @@
+﻿.dice:hover {
+    opacity: .65
+}
+
+.usedActiveDice {
+    opacity: .25
+}
+
+.diceDisable {
+    pointer-events: none;
+    opacity: .35
+}
+    
+
+.boardPart {
+    display: inline-block;
+    height: 350px
+}
+.boardPartBar {
+    display: flex;
+    width: 400px;
+    height: 70px;
+    padding: 20px;
+    margin: 15px;
+}
+.boardPart:hover {
+   opacity: .8
+    }
+
+.gameBoardTop {
+    display: flex
+}
+.gameBoardBar {
+    display: flex
+}
+.gameBoardBot {
+    display: flex
+}
+.gameBoardBot .boardPart {
+    /*    display: grid;*/
+    }
+.pawn{
+    display: inline-table;
+    display: list-item;
+    border-radius: 50%;
+    margin: 5px;
+    list-style: inside;
+    height:38px;
+    width:38px
+}
+.bigPawn {
+    display: inline-table;
+    display: list-item;
+    border-radius: 50%;
+    margin: 5px;
+    list-style: inside;
+ height: 65px;
+    width: 65px
+}
+.pawn:hover {
+    opacity: .7
+}
+
+.Player1 {
+    background-color: burlywood
+}
+.Player2 {
+    background-color: darkblue
+}
+
+.fightVs {
+    font-size: xx-large;
+    color: brown;
+    border: 2px solid green;
+    margin-top: 20px;
+}

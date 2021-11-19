@@ -1,0 +1,66 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    string username = "";
+    if (Context.Request.Cookies["UserName"] != null)
+        username = Context.Request.Cookies["UserName"].ToString();
+    int player = WebUi.Hubs.BackgammonHub.IsPlayer(username);
+
+}
+<link rel="stylesheet" href="~/css/game.css?version=5" />
+<div>
+    Player Turn:
+    <div id="PlayerTurn" class="pawn">
+
+    </div>
+</div>
+
+<div id="leftToCollect" class="row">
+    <div class="col-5">
+        <h4>Player 1 need to collect:</h4>
+        <strong id="player1Left">
+            15
+        </strong>
+    </div>
+    <div class="col-5">
+        <h4>Player 2 need to collect:</h4>
+        <strong id="player2Left">
+            15
+        </strong>
+    </div>
+</div>
+<div class="row">
+    <div class="gameBoard col-10" id="gamwBoard">
+    </div>
+    <div class="col-2" id="sideGame">
+        <button id="rollDiceBtn" class="btn btn-info">Roll Dice</button>
+        <div id="diceHolder">
+        </div>
+        <button onclick="removeSelected()" class="btn btn-info">Remove Selected</button>
+    </div>
+    @if (player == 1)
+    {
+        <div class="col-2" >
+            You are: <div class="bigPawn Player1"></div>
+        </div>
+    }
+    else if (player == 2)
+    {
+        <div class="col-2">
+            You are:  <div class="bigPawn Player2"></div>
+        </div>
+    }
+</div>
+<div>
+    <button id="startNewGameBtn" class="btn btn-info">Start New Game</button>
+    <button onclick="giveUpOnTurn()" class="btn btn-danger">Give up on turn</button>
+    <button onclick="giveUp()" class="btn btn-danger">GiveUp</button>
+
+</div>
+<script src="~/js/signalr/signalr.js"></script>
+<script src="~/js/\backgammon.js" asp-append-version="true"></script>
+
+
+
+

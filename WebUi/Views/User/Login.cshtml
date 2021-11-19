@@ -1,0 +1,13 @@
+﻿@model Models.User
+
+
+@if (TempData["notFound"] is true)
+{
+    <div class="border border-danger">Username or Password are wrong</div>
+}
+<h2>Log in</h2>
+<form method="post">
+    <input asp-for="UserName" placeholder="UserName"  />
+    <input asp-for="Password" placeholder="Password" />
+    <input type="submit" asp-action="Login"   class="btn btn-dark"/>
+</form>

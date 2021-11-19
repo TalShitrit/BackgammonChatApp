@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    string username = "";
+    if (Context.Request.Cookies["UserName"] is string name)
+        username = name;
+    string chatTarget = "";
+    string gameTarget = "";
+}
+@if (TempData["notFound"] is true)
+{
+    <div class="border border-danger">Chat target not found</div>
+}
+@if (TempData["TargetCantBeSelf"] is true)
+{
+    <div class="border border-danger">Target Cant Be Self</div>
+}
+@if (TempData["SomeErrorWasMade"] is true)
+{
+    <div class="border border-danger">Some Error Was Made</div>
+}
+<div class="row">
+    @if (username != "")
+    {
+        <div class="col-9">
+            <div>
+                <form asp-action="Chat" method="post">
+                    <label>chat target</label>  <input asp-for="@chatTarget" id="chatTargetInput" placeholder="Public" />
+                    <label>go to chat:</label> <input type="submit" class="btn btn-secondary" />
+                </form>
+            </div>
+
+            <div>
+                <label>Game target</label>  <input id="gameTargetInput" asp-for="@gameTarget" />
+                <button onclick="askForAGame()" class="btn btn-secondary">Ask to play</button>
+            </div>
+        </div>
+    }
+    else
+    {<div class="col-9">
+            <div>
+                please log in first
+                <a class="btn-link" asp-controller="User" asp-action="Login">Login</a>
+            </div>
+            <div>
+                Dont have user?
+                <a class="btn-link" asp-controller="User" asp-action="Register">Register</a>
+            </div>
+        </div>
+    }
+    <div class="col-3">
+        <partial name="_UserList" />
+    </div>
+</div>

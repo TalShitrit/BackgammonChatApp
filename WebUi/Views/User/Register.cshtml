@@ -1,0 +1,16 @@
+﻿@model Models.User
+    
+@if (TempData["cantRegister"] is true)
+{
+    <div class="border border-danger">Username already exist</div>
+}
+@if (TempData["emptyUser"] is true)
+{
+    <div class="border border-danger">Username or password are empty</div>
+}
+<h2>Register</h2>
+<form method="post">
+    <input asp-for="UserName" placeholder="UserName" />
+    <input asp-for="Password" placeholder="Password" />
+    <input type="submit" asp-action="Register"   class="btn btn-dark"/>
+</form>
